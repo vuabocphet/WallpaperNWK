@@ -35,7 +35,30 @@ public class MainActivity extends AppCompatActivity {
         adapterIMG = new AdapterIMG(list, this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterIMG);
+        //recyclerView.setAdapter(adapterIMG);
+        dataClient.getDataALL().enqueue(new Callback<List<ABC>>() {
+            @Override
+            public void onResponse(Call<List<ABC>> call, Response<List<ABC>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "ERR", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+               for (ABC abc:response.body()){
+
+                   for (WpFeaturedmedium_ wpFeaturedmedium_:abc.getEmbedded().getWpFeaturedmedia()){
+                       Log.e("TAG",wpFeaturedmedium_.getSourceUrl());
+                   }
+
+               }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ABC>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        dataClient.getDataALL().enqueue(new Callback<List<PostModel>>() {
 //            @Override
@@ -55,48 +78,48 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        dataClient.getCategoryPosition("18").enqueue(new Callback<List<PostModel>>() {
-            @Override
-            public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
-                if (!response.isSuccessful()) {
-                    Log.e("CODE", response.code() + "");
-                    return;
-                } else {
-                    list.clear();
-                    List<PostModel> postModels = response.body();
-                    Log.e("SIZE", postModels.size() + "");
-                    for (PostModel x : postModels) {
-
-                        String[] words = x.getContent().getRendered().split("\\s");
-                        for (String w : words) {
-//                            if (w.startsWith("src=")) {
-//                                Log.e("CONTENT", w.substring(5,w.length()-1));
-//                                list.add(w.substring(4));
+//        dataClient.getCategoryPosition("18").enqueue(new Callback<List<PostModel>>() {
+//            @Override
+//            public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
+//                if (!response.isSuccessful()) {
+//                    Log.e("CODE", response.code() + "");
+//                    return;
+//                } else {
+//                    list.clear();
+//                    List<PostModel> postModels = response.body();
+//                    Log.e("SIZE", postModels.size() + "");
+//                    for (PostModel x : postModels) {
 //
+//                        String[] words = x.getContent().getRendered().split("\\s");
+//                        for (String w : words) {
+////                            if (w.startsWith("src=")) {
+////                                Log.e("CONTENT", w.substring(5,w.length()-1));
+////                                list.add(w.substring(4));
+////
+////                            }
+////                            if (w.startsWith("srcset=")) {
+////                                Log.e("CONTENT", w.substring(8,w.length()));
+////                                list.add(w.substring(7));
+////                            }4
+//
+//                            if (w.startsWith("http:") && w.endsWith("jpg")) {
+//                                Log.e("CONTENT", w);
+//                                list.add(w);
 //                            }
-//                            if (w.startsWith("srcset=")) {
-//                                Log.e("CONTENT", w.substring(8,w.length()));
-//                                list.add(w.substring(7));
-//                            }4
-
-                            if (w.startsWith("http:") && w.endsWith("jpg")) {
-                                Log.e("CONTENT", w);
-                                list.add(w);
-                            }
-
-
-                        }
-                    }
-                    Log.e("LIST", list.size()+"");
-                    adapterIMG.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<PostModel>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//
+//                        }
+//                    }
+//                    Log.e("LIST", list.size()+"");
+//                    adapterIMG.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<PostModel>> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
     }

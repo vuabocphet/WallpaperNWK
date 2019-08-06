@@ -1,6 +1,7 @@
 package com.developer.wallpaper.retrofit;
 
-import com.developer.wallpaper.PostModel;
+import com.developer.wallpaper.ABC;
+
 
 import java.util.List;
 
@@ -15,15 +16,15 @@ import retrofit2.http.Query;
 public interface DataClient {
 
       //Code GET ALL DATA
-    @GET("/wp-json/wp/v2/posts?embed")
-    Call<List<PostModel>> getDataALL();
+    @GET("/wp-json/wp/v2/posts?_embed")
+    Call<List<ABC>> getDataALL();
 
 
       //Code GET CATEGORY POSITION
 
 
-    @GET("/wp-json/wp/v2/posts")
-    Call<List<PostModel>> getCategoryPosition(@Query("category") String category);
+//    @GET("/wp-json/wp/v2/posts")
+//    Call<List<PostModel>> getCategoryPosition(@Query("category") String category);
 
 
 
