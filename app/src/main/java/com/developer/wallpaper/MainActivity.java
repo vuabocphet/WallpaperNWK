@@ -40,17 +40,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<ABC>> call, Response<List<ABC>> response) {
                 if (!response.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "ERR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "ERR_CODE:"+response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-               for (ABC abc:response.body()){
+                for (ABC abc:response.body()){
+                    String[] words = abc.getContent().getRendered().split("\\s");
 
-                   for (WpFeaturedmedium_ wpFeaturedmedium_:abc.getEmbedded().getWpFeaturedmedia()){
-                       Log.e("TAG",wpFeaturedmedium_.getSourceUrl());
-                   }
+                    for (String w : words) {
+                        if (w.startsWith("http:") && w.endsWith("jpg")) {
+                            Log.e("CONTENT", w);
+                        }
+                    }
 
-               }
+
+
+
+                }
+
+
+//               for (ABC abc:response.body()){
+//
+//                   for (WpFeaturedmedium_ wpFeaturedmedium_:abc.getEmbedded().getWpFeaturedmedia()){
+//                       Log.e("TAG",wpFeaturedmedium_.getSourceUrl());
+//                   }
+//
+//               }
 
             }
 
@@ -59,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+//        Code không liên quan
 
 //        dataClient.getDataALL().enqueue(new Callback<List<PostModel>>() {
 //            @Override
@@ -77,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 //            }
 //        });
-
+//
 //        dataClient.getCategoryPosition("18").enqueue(new Callback<List<PostModel>>() {
 //            @Override
 //            public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
