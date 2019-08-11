@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">WallpaperNWK</string>
+    <string name="app_name">Wallpaper</string>
+    <string name="latest">Latest</string>
+    <string name="category">Category</string>
+    <string name="gifs">GIFs</string>
+    <string name="myfavorites">My Favorites</string>
+    <string name="rateapp">Rate App</string>
+    <string name="moreapp">More App</string>
+    <string name="aboutus">About Us</string>
+    <string name="setting">Setting</string>
+    <string name="privacy">Privacy Police</string>
+    <string name="hello">Amazing Wallpaper in your way</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="share" />
+    <string name="save" />
+    <string name="set" />
+    <string name="love" />
+    <string name="loading">Đang tải</string>
 </resources>
