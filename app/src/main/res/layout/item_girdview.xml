@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:id="@+id/layout"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    >
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_launcher_background"/>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <View
+            android:background="@drawable/boder_bottom"
+            android:alpha="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+       <LinearLayout
+           android:id="@+id/a"
+           android:layout_width="wrap_content"
+           android:layout_height="20dp"
+           android:layout_marginLeft="10dp"
+           android:layout_centerVertical="true"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_gravity="center_vertical"
+               android:id="@+id/priview"
+               android:padding="2dp"
+               android:background="@drawable/shape_priviwe"
+               android:layout_width="20dp"
+               android:layout_height="20dp"
+               android:src="@drawable/priview"/>
+           <TextView
+               android:layout_gravity="center_vertical"
+               android:gravity="center"
+               android:layout_marginLeft="5dp"
+               android:textColor="@color/white"
+               android:fontFamily="@font/thin"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="10"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_toRightOf="@id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/love"
+                android:padding="2dp"
+                android:background="@drawable/shape_love"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/love"/>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:id="@+id/spin_kit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+         />
+
+
+
+</RelativeLayout>
